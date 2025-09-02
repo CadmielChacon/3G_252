@@ -1,0 +1,116 @@
+@startuml
+Class Juego {
+   +MostrarPantalla(Pantalla)
+   +IniciarNivel(Nivel)
+   +ReproducirAnimacion(Animacion)
+   +ActualizarReloj(RelojGlobal
+   -niveles: Nivel[3]
+}
+
+Class Pantalla
+Class PantallaPrincipal
+Class PantallaPausa
+Class PantallaResultados
+Class PantallaGameOver
+
+Class RelojGlobal
+
+Class Animacion
+
+Class Jugador{
+   +ObtenerMedalla(Medalla)
+   +GuardarObjeto(Inventario)
+   +ActualizarPuntaje(Puntaje)
+}
+Class Medalla
+Class Inventario
+Class Puntaje
+
+Class Nivel{
+   +ResolverPuzzle(Puzzle)
+   +ActivarEvento(EventoOculto)
+   -puzzles: Puzzles[*]
+   -escenario: Escenario
+   -puertas: Puertas[*]
+   -trampas: Trampas[*]
+   -tema: Temas[3]
+}
+
+Class Interfaz{
+   -puntaje: Puntaje
+   -inventario: Inventario[5]
+   -pistas: Pista[3]
+   -cronometro: Cronometro
+}
+Class Puntaje 
+Class Inventario 
+Class Intento{
++AplicarPenalizacion(Penalizacion)
+}
+Class Penalizacion
+Class Cronometro 
+
+Class Tema
+
+Class Puzzle
+Class PuzzleLogico
+Class PuzzleBusqueda{
+   -objetos: Objeto[*]
+}
+Class PuzzleMatematico
+
+Class Objeto
+Class ObjetoClave
+Class ObjetoDecorativo
+
+Class Escenario
+
+Class EventoOculto{
+   -temporizador: Temporizador
+}
+Class Temporizador
+
+Class Puerta
+
+Class Trampa
+
+Juego o-- Pantalla
+Pantalla <|-- PantallaGameOver 
+Pantalla <|-- PantallaResultados
+Pantalla <|-- PantallaPausa
+Pantalla <|-- PantallaPrincipal
+
+Juego o- RelojGlobal
+
+Juego o- Animacion
+
+Juego o-- Jugador
+Jugador "0" o-- "*" Medalla
+Jugador o-- Inventario
+Jugador o-- Puntaje
+
+Juego "1"*----"3" Nivel
+Nivel "1"*---"0...*" Puzzle
+Nivel *-- Escenario
+Nivel *- EventoOculto
+Nivel "1" o- "*" Puerta
+Nivel o-- Trampa
+Nivel "1"*--"3" Tema
+Nivel *----- Interfaz
+
+
+Interfaz "0"*--"*" Puntaje
+Interfaz "0"*--"5" Inventario
+Interfaz "0"*--"*" Intento 
+Intento "0" o-- "*" Penalizacion
+Interfaz *-- Cronometro
+
+Puzzle <|-- PuzzleLogico 
+Puzzle <|-- PuzzleBusqueda 
+Puzzle <|-- PuzzleMatematico 
+PuzzleBusqueda "1"*--"*" Objeto
+Objeto <|-- ObjetoClave
+Objeto <|-- ObjetoDecorativo
+
+EventoOculto *-- Temporizador
+@enduml
