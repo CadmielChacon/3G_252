@@ -1,9 +1,11 @@
 #include <iostream>
+#include <Foco.hpp>
+#include <EstadoFoco.hpp>
 using namespace std;
 int main(int argc, char const *argv[])
 {
-    cout<<"Hola mundo"<<endl;
+    Foco foquito;
+    foquito.Encender();
+
     return 0;
 }
-
-
