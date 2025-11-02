@@ -1,5 +1,6 @@
-bin/ejemplo: src/ejemplo.cpp
-	c++ src/ejemplo.cpp -o bin/ejemplo -lftxui-screen -lftxui-dom -lftxui-component
+bin/Parcial2: src/Parcial2.cpp
+	c++ -IFTXUI/include -LFTXUI/build src/Parcial2.cpp -o bin/Parcial2 -lftxui-screen -lftxui-dom -lftxui-component
 
-runEjemplo: bin/ejemplo
-	./bin/ejemplo
+runParcial2: bin/Parcial2
+	./bin/Parcial2
+
