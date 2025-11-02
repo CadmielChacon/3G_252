@@ -1,3 +1,4 @@
+//ahora si el bueno para el examen
 #include <ftxui/dom/elements.hpp>   // Para elementos de interfaz
 #include <ftxui/screen/screen.hpp>  // Para renderizado
 #include <thread>                   // Para sleep
